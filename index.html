@@ -1,0 +1,52 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Pokémon Search App</title>
+  </head>
+  <body>
+    <img class="background" src="https://res.cloudinary.com/dmf7frt4a/image/upload/v1725282824/background_v4ze5d.png">
+    <h2>Pokémon Search App</h2>
+    <img class='logo' src="imgs/logo.PNG" alt="logo" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/Ayoub-Younes/build-a-cash-register/master/imgs/logo.PNG';">
+    <div class="container">
+      <p>Search for Pokémon Name or ID:</p>
+      <div id="search-container">
+        <input id="search-input" name="pokemon" required />
+        <button id ="search-button">Search</button>
+      </div>
+    </div>
+    <div class="pok-details">
+      <div id="image"></div>
+      <img id="pok-hd" src="" alt="">
+      <div class="pokemon-fig">
+        <span id="pokemon-name"></span>
+        <span id="pokemon-id"></span>
+      </div>
+      <div class="pok-physics">
+        <span id="weight"></span>
+        <span id="height"></span>
+      </div>
+      <div class="pok-stats">
+        <span id="hp"></span>
+        <span id="attack"></span>
+        <span id="defense"></span>
+        <span id="special-attack"></span>
+        <span id="special-defense"></span>
+        <span id="speed"></span>
+      </div>
+      <div class="pok-stats-bar">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+        <span id="types"></span>
+    </div>
+  </body>
+  </html>
+  <script src="./script.js"></script>
