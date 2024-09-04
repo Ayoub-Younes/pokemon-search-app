@@ -8,6 +8,7 @@ const name_p = document.getElementById("pokemon-name");
 const id_p = document.getElementById("pokemon-id");
 const image_p = document.getElementById("image")
 const pokHd = document.getElementById("pok-hd")
+const pokHdUrl = document.getElementById("pok-hd-url")
 const weight_p = document.getElementById("weight");
 const height_p = document.getElementById("height");
 const types_p = document.getElementById("types");
@@ -77,25 +78,42 @@ fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
 
     //HTML display//
       name_p.innerHTML = `${Object.values(pokDetails)[0].toUpperCase()}`;
-      pokHd.src = `imgs\\Pokemons_Images\\${name_p.innerText}.png`
       id_p.innerHTML = `#${Object.values(pokDetails)[1]}`;
       weight_p.innerHTML = `${Object.values(pokDetails)[2]}`;
       height_p.innerHTML = `${Object.values(pokDetails)[3]}`;
       hp_p.innerHTML = `${Object.values(pokDetails)[4]}`;
       types_p.innerHTML = ""
       Object.values(pokDetails)[5].forEach((type,index) => types_p.innerHTML +=`<span class=type${index}>${type.toUpperCase()}</span>`)
-      image_p.innerHTML = `<img id="sprite" src="${Object.values(pokDetails)[6]}">`;
       attack_p.innerHTML = `${Object.values(pokDetails)[7]}`;
       defense_p.innerHTML = `${Object.values(pokDetails)[8]}`;
       specialAttack_p.innerHTML = `${Object.values(pokDetails)[9]}`;
       specialDefense_p.innerHTML = `${Object.values(pokDetails)[10]}`;
       speed_p.innerHTML = `${Object.values(pokDetails)[11]}`;
-      let {hp, attack, defense, special_attack, special_defense, speed} = pokDetails
+      const fallbackSrc = `imgs/Pokemons_Images/${pokDetails.name}.png`;
+      const primarySrc = `https://raw.githubusercontent.com/Ayoub-Younes/build-a-pokemon-search-app/master/imgs/Pokemons_Images/${pokDetails.name}.png`;
+      const iconSrc = `<img id="sprite" src="${Object.values(pokDetails)[6]}">`;
+      // Function to load the image using a Promise
+      function loadImage(src) {
+          return new Promise((resolve, reject) => {
+              pokHd.onload = () => {
+                  pokHd.style.visibility = 'visible';
+                  resolve(src);
+              };
+              pokHd.onerror = () => reject(new Error('Image failed to   load'));
+              pokHd.src = src;
+              image_p.innerHTML = iconSrc
+          });
+      }
+      loadImage(primarySrc)
+      .catch(() => {
+          console.log("Primary image failed, loading fallback...");
+          return loadImage(fallbackSrc);
+      })
+      let {hp, attack, defense, special_attack, special_defense, speed} = pokDetails;
       let stats = [hp, attack, defense, special_attack, special_defense, speed] 
       for (let i = 0; i < stats.length; i++){
         bar[i].style.width = `${(parseInt(stats[i])/255)*100}%`
       }
-      
   }
   searchButton.addEventListener("click",fetchPokI)
  

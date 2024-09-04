@@ -151,6 +151,7 @@ input:focus {
 
 
 #pok-hd {
+  visibility: hidden;
   position: absolute;
   left: 610px;
   top: 220px;
@@ -235,20 +236,3 @@ input:focus {
   top: 5px;
   left: 225px;
 }
-
-
-/* Responsive adjustments 
-@media (max-width: 768px) {
-  .container h2, .container p {
-    font-size: 1.2em;
-  }
-
-  input {
-    font-size: 1em;
-  }
-
-  #purchase-btn {
-    padding: 8px 15px;
-    font-size: 1em;
-  }
-}*/
