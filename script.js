@@ -40,6 +40,7 @@ fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
   //FUNCTIONS
   const fetchPokI = () => {
 
+    pokHd.src = ''
     //Check if Pok available//
     let input = searchInput.value.toLowerCase()
     const pokemon = allPoksData.find(pok => (pok.id == searchInput.value || pok.name == input));
