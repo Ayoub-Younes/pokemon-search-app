@@ -27,78 +27,96 @@
 }
 
 html {
-  background: linear-gradient(#bbbabd, #282527);
   font-family: "Arcade Regular", cursive;
   font-size: 20px;
+  background-color: #000;
+  display: block;
+  background-color: #2a1c4f;
+  background-image: linear-gradient(to top, #271c4f8a 1%, #8cb9cf5b), url("imgs/background-2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
+  opacity: 0.9;
+  box-shadow: 10px 10px  1000px 100px #8cb9cf5b;
+  width: 990px;
+  height: 640px;
+  margin: auto;
+  position: relative;
   display: none;
-  height: 100vh;
-} 
-
-.background { 
-  top: 1px;
-  left: 3px;
-  position: absolute;
-  z-index: -1;
-  width: 1530px;
-  height: 700px;
+  justify-content: center;
+  align-items: center;
+  transform-origin: top left;
 }
 
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 0;
+}
 
-h2 {
-  margin-top: -40px;
-  margin-left: 20px;
+.title {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 15px;
+  height: 40px;
+  text-align: center;
+  left: 20px;
   font-family: 'Pokemon Hollow';
-  font-size: 2em;
+  font-size: 1.3em;
   color: #D3D6D3;
-}
-
-.logo {
-  position: absolute;
-  left: 690px;
-  width: 150px;
-  height: auto;
 }
 
 .container {
   position: absolute;
-  left: 60px;
-  margin-top: 10px;
+  top: 100px;
+  left: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0px;
-  max-width: 600px;
 }
 
 
 .container p {
   font-family: 'Cartoon';
   margin-bottom: 15px;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 #search-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-left: -30px;
+  width: 300px;
+
 }
 
 
 input {
-  width: 300px;
+  width: 200px;
   margin: 0 10px;
-  padding: 10px;
+  padding: 5px;
   border: 2px solid #000;
   border-radius: 10px;
-  outline: none;
   background-color: #B5D5E1;
-  color: rgb(39,26,72);
+  color: #2a1c4f;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-  font-family: "square_sans_serif";
+  font-family: 'Cartoon';
   font-size: 1.2em;
   text-align: center;
 }
@@ -109,21 +127,22 @@ input:focus {
 }
 
 #search-button {
-  padding: 10px 20px;
+  padding: 5px 15px;
   font-family: "Arcade Regular", cursive;
-  font-size: large;
+  font-size: 1em;
   border-radius: 20px;
-  background-color: rgba(29, 29, 29, 0.7);
+  background-color: #2a1c4fc5;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #search-button:hover {
-  background-color: rgba(29, 29, 29, 0.9);
-}
+  background-color: #2a1c4f;}
 
 .pok-details {
+  position: absolute;
+  top: -40px;
   font-family: 'Arcade Regular';
   font-weight: 900;
   font-size: 1.5em;
@@ -133,19 +152,21 @@ input:focus {
   width: 500px;
   text-align: center;
   font-family: 'Cartoon';
-  font-size: 2em;
+  font-size: 1.3em;
   position: absolute;
-  left: 10px;
+  left: -90px;
   top: 550px;
   text-align: center;
-  color: #282527;
+  color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
 }
 
 #sprite {
   position: absolute;
-  left: 1020px;
-  top: 120px;
-  width: 200px;
+  left: 620px;
+  top: 145px;
+  width: 205px;
   height: auto;
 }
 
@@ -153,51 +174,69 @@ input:focus {
 #pok-hd {
   visibility: hidden;
   position: absolute;
-  left: 610px;
-  top: 220px;
+  left: 415px;
+  top: 310px;
   margin: -100px;
-  width: 500px;
+  width: 350px;
   height: auto;
 }
 
 .pok-physics{
   position: absolute;
-  left: 1100px;
-  top: 540px;
+  left: 705px;
+  width: 100px;
+  top: 530px;
   display: flex;
   flex-direction: column;
-  color: #282527
+  gap: 2.5px;
+  font-family: 'Cartoon';
+  color: #ffffff;
+  font-size: 0.7em;
+  font-weight: 900;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
 }
 
 .pok-physics span{
   margin: -3.5px 0px;
  }
  
+.pok-physics span span {
+  font-family: "square_sans_serif_7";
+  font-size: 0.8em;
+}
+
 
 .pok-stats{
   position: absolute;
-  left: 100px;
-  width: 42px;
-  top: 277px;
   display: flex;
   flex-direction: column;
-  font-family: 'Arcade Regular';
+  gap: 2px;
+  left: 47px;
+  width: 42px;
+  top: 292px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Cartoon';
   font-weight: 900;
-  font-size: 1em;
+  font-size: 0.7em;  
   text-align: right;
-  color:#282527;
+  color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+
 }
 
-.pok-stats span{
+.pok-stats span{  
  margin: -4px 0px;
 }
 
 .pok-stats-bar{
-  width: 258px;
+  width: 167px;
   background-color: rgb(72,52,128,0.7);
   position: absolute;
-  left: 146px;
-  top: 277px;
+  left: 93px;
+  top: 292px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -208,31 +247,41 @@ input:focus {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   width: 0px;
   background: linear-gradient(90deg, blue, red);
-  height: 20.5px;
+  height: 19.1px;
   opacity: 0.6;
+}
+
+#bp {
+  position: absolute;
+  top: 425px;
+  left: 61px;
+  font-family: "Cartoon";
+  color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+  font-weight: 900;
+  font-size: 0.7em;  
+
 }
 
 #types{
   position: absolute;
-  left: 1150px;
-  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  left: 760px;
+  top: 65px;
+  align-items: center;
   color: #412F76;
-  font-family: 'Pokemon Solid';
+  font-family: "Cartoon";
   font-size: .8em;
   text-align: center;
+  color: #d5d9d4;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+}
+#types span {
+  text-align: center;
+  width: 90px;
 }
 
-
- #types .type0 {
-  position: absolute;
-  width: 100px;
-  top: 5px;
-  left: 45px;
-}
-
-#types .type1 {
-  position: absolute;
-  width: 100px;
-  top: 5px;
-  left: 225px;
-}

@@ -1,6 +1,4 @@
-window.onload = function() {
-  document.body.style.display = 'block';
-};
+
 
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
@@ -18,6 +16,7 @@ const defense_p = document.getElementById("defense");
 const specialAttack_p = document.getElementById("special-attack");
 const specialDefense_p = document.getElementById("special-defense");
 const speed_p = document.getElementById("speed");
+const bp = document.getElementById("bp");
 const bar = document.querySelectorAll(".bar");
 
 let pokemonData = {};
@@ -75,13 +74,13 @@ fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
     pokDetails.types = types;
     pokDetails.image = front_default;
   }
-    console.log("DATA", pokDetails)
-
-    //HTML display//
+  const total = pokDetails.hp + pokDetails.attack + pokDetails.defense + pokDetails.special_attack + pokDetails.special_defense + pokDetails.speed;
+  
+  //HTML display//
       name_p.innerHTML = `${Object.values(pokDetails)[0].toUpperCase()}`;
       id_p.innerHTML = `#${Object.values(pokDetails)[1]}`;
-      weight_p.innerHTML = `${Object.values(pokDetails)[2]}`;
-      height_p.innerHTML = `${Object.values(pokDetails)[3]}`;
+      weight_p.innerHTML = `${Object.values(pokDetails)[2]/10} <span>kg</span>`;
+      height_p.innerHTML = `${Object.values(pokDetails)[3]/10} <span>m</span>` ;
       hp_p.innerHTML = `${Object.values(pokDetails)[4]}`;
       types_p.innerHTML = ""
       Object.values(pokDetails)[5].forEach((type,index) => types_p.innerHTML +=`<span class=type${index}>${type.toUpperCase()}</span>`)
@@ -90,6 +89,7 @@ fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
       specialAttack_p.innerHTML = `${Object.values(pokDetails)[9]}`;
       specialDefense_p.innerHTML = `${Object.values(pokDetails)[10]}`;
       speed_p.innerHTML = `${Object.values(pokDetails)[11]}`;
+      bp.innerHTML = `${total}`;
       const fallbackSrc = `imgs/Pokemons_Images/${pokDetails.name}.png`;
       const primarySrc = `https://raw.githubusercontent.com/Ayoub-Younes/build-a-pokemon-search-app/master/imgs/Pokemons_Images/${pokDetails.name}.png`;
       const iconSrc = `<img id="sprite" src="${Object.values(pokDetails)[6]}">`;
@@ -117,4 +117,39 @@ fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
       }
   }
   searchButton.addEventListener("click",fetchPokI)
+  searchInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") { fetchPokI() }
+  })
  
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const img = document.getElementById('background-img');
+    const mainContent = document.body;
+
+    let imageLoaded = false;
+
+    function showContent() {
+      mainContent.style.display = 'block';
+    }
+
+    if (img.complete) {
+      imageLoaded = true;
+      showContent();
+    } else {
+
+      img.onload = function() {
+        imageLoaded = true;
+        showContent();
+      };
+    }
+
+    // Fallback in case the image takes too long or fails to load
+    setTimeout(function() {
+      if (!imageLoaded) {
+        showContent();
+      }
+    }, 3000);
+  });
+

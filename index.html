@@ -7,10 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Pokémon Search App</title>
   </head>
-  <body>
-    <img class="background" src="https://res.cloudinary.com/dmf7frt4a/image/upload/v1725282824/background_v4ze5d.png">
-    <h2>Pokémon Search App</h2>
-    <img class='logo' src="imgs/logo.PNG" alt="logo" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/Ayoub-Younes/build-a-cash-register/master/imgs/logo.PNG';">
+  <body class=".wrapper">
+    <img id="background-img" class="background" src="https://res.cloudinary.com/dmf7frt4a/image/upload/v1725282824/background_v4ze5d.png">
+    <div class="title"><span>Pokémon Search App</span></div>
     <div class="container">
       <p>Search for Pokémon Name or ID:</p>
       <div id="search-container">
@@ -37,6 +36,7 @@
         <span id="special-defense"></span>
         <span id="speed"></span>
       </div>
+      <div id="bp"></div>
       <div class="pok-stats-bar">
         <span class="bar"></span>
         <span class="bar"></span>
