@@ -156,22 +156,35 @@ fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
 
     const info = document.getElementById("info");
     const wrapper = document.querySelector(".wrapper")
-const scaleToFit = () => {
-  const targetWidth = 990;
-  const screenW = screen.width;
 
-  if (screenW < targetWidth) {
-    const scale = screenW / targetWidth;
-    wrapper.style.transform = `scale(${scale})`;
-    wrapper.style.transformOrigin = 'top left'; // or center if you prefer
-  } else {
-    wrapper.style.transform = 'scale(1)';
-  }
-};
-    
+function isMobile() {
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+
+function scaleToFit() {
+  const baseWidth = 990;
+  const baseHeight = 640;
+
+  const width = isMobile() ? screen.width : window.innerWidth;
+  const height = isMobile() ? screen.height : window.innerHeight;
+
+  const scaleX = width / baseWidth;
+  const scaleY = height / baseHeight;
+  const scale = Math.min(scaleX, scaleY);
+
+  wrapper.style.transform = `scale(${scale})`;
+
+}
+    if (isMobile()) {
+    wrapper.style.transformOrigin = 'top left';
+} else {
+  wrapper.style.transformOrigin = 'top center';
+}
 
   window.addEventListener('load', scaleToFit);
   window.addEventListener('resize', scaleToFit);
+window.addEventListener("orientationchange", scaleToFit);
 
     info.innerText = `
       screen.width = ${screen.width}px
