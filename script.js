@@ -153,3 +153,29 @@ fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
     }, 3000);
   });
 
+
+    const info = document.getElementById("info");
+    const wrapper = document.querySelector(".wrapper")
+const scaleToFit = () => {
+  const targetWidth = 990;
+  const screenW = screen.width;
+
+  if (screenW < targetWidth) {
+    const scale = screenW / targetWidth;
+    wrapper.style.transform = `scale(${scale})`;
+    wrapper.style.transformOrigin = 'top left'; // or center if you prefer
+  } else {
+    wrapper.style.transform = 'scale(1)';
+  }
+};
+    
+
+  window.addEventListener('load', scaleToFit);
+  window.addEventListener('resize', scaleToFit);
+
+    info.innerText = `
+      screen.width = ${screen.width}px
+      screen.height = ${screen.height}px
+      window.innerWidth = ${window.innerWidth}px
+      window.innerHeight = ${window.innerHeight}px
+    `;

@@ -33,6 +33,7 @@ html {
   font-family: "Arcade Regular", cursive;
   font-size: 20px;
   display: block;
+  
 }
 
 #background-img-2 {
@@ -43,26 +44,29 @@ html {
   z-index: -2;
   opacity: 0.7;
   background: linear-gradient(135deg, rgb(128, 0, 128), rgb(0, 0, 255));
+  
 
-}
-
-html, body {
-  height: 100%;
-  overflow: hidden;
 }
 
 body {
+  display: none;
+  height: 100%;
+}
+
+
+.wrapper {
   opacity: 1;
   box-shadow: 0px 0px 1000px 2000px #76a2c44b;
   width: 990px;
   height: 640px;
   margin: auto;
   position: relative;
-  display: none;
   justify-content: center;
   align-items: center;
   transform-origin: top left;
 }
+
+
 
 .background {
   position: absolute;
@@ -293,3 +297,9 @@ input:focus {
   width: 90px;
 }
 
+#info {
+  position: absolute;
+  top: 300px;
+  left: 300px;
+  width: 500px;
+}
